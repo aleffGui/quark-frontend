@@ -13,7 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { DashboardComponent } from './components/view/dashboard/dashboard.component';
-import { TaskReadComponent } from './components/view/task/task-read-all/task-read-allcomponent';
+import { TaskReadAllComponent } from './components/view/task/task-read-all/task-read-allcomponent';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,7 @@ import { TaskReadComponent } from './components/view/task/task-read-all/task-rea
     NavComponent,
     FooterComponent,
     DashboardComponent,
-    TaskReadComponent
+    TaskReadAllComponent
   ],
   imports: [
     BrowserModule,
