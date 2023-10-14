@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { DashboardComponent } from './components/view/dashboard/dashboard.component';
 import { TaskReadAllComponent } from './components/view/task/task-read-all/task-read-allcomponent';
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { TaskReadAllComponent } from './components/view/task/task-read-all/task-
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
