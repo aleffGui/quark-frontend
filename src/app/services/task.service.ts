@@ -29,4 +29,12 @@ export class TaskService {
   insert(newTask: NewTaskDto) : Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, newTask);
   }
+
+  delete(idTask:any) : Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${idTask}`);
+  }
+  
+  markTaskAsComplete(idTask:any) : Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${idTask}/complete`, idTask);
+  }
 }

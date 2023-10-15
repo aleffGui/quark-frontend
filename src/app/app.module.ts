@@ -25,6 +25,7 @@ import { DatePipe } from '@angular/common';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import { TaskUpdateComponent } from './components/view/task/task-update/task-update.component';
+import { ConfirmModalComponent } from './components/template/modal/confirm-modal/confirm-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { TaskUpdateComponent } from './components/view/task/task-update/task-upd
     TaskReadAllComponent,
     TaskCreateComponent,
     TaskFormComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,

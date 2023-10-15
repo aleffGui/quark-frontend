@@ -54,7 +54,6 @@ export class TaskFormComponent implements OnInit {
       })
     }
     this.findAllUsers();
-    console.log(this.isUpdate)
   }
 
   validateForm() {
@@ -77,7 +76,7 @@ export class TaskFormComponent implements OnInit {
         this.router.navigate(['/tarefas']);
       
     }, error => {
-      console.log(error.error.errors)
+      this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
     })
   }
   updateTask() {
@@ -87,7 +86,7 @@ export class TaskFormComponent implements OnInit {
         this.router.navigate(['/tarefas']);
       }
     }, err => {
-      this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom'})
+      this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
     })
   }
   convertStringToLocalDateTime(dataString: string) {
