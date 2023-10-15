@@ -18,6 +18,14 @@ export class TaskService {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
   
+  findById(idTask:any) : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${idTask}`);
+  }
+
+  update(idTask:any, newTask: Task) : Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${idTask}`, newTask);
+  }
+
   insert(newTask: NewTaskDto) : Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, newTask);
   }

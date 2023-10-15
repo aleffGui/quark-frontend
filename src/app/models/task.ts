@@ -6,5 +6,6 @@ export interface Task {
     description: String;
     priority: String;
     responsible?: User;
+    deadline: any;
 
 }

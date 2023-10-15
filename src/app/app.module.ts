@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
+import { TaskUpdateComponent } from './components/view/task/task-update/task-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardComponent,
     TaskReadAllComponent,
     TaskCreateComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    TaskUpdateComponent
   ],
   imports: [
     BrowserModule,
