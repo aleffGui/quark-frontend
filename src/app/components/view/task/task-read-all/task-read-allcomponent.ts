@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/models/task';
+import { User } from 'src/app/models/user';
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-task-read-all',
@@ -10,14 +12,14 @@ import { TaskService } from 'src/app/services/task.service';
 export class TaskReadAllComponent implements OnInit {
   
   tasks: any = [];
-
+  users: User[] = [];
   constructor(private taskService: TaskService) {}
   
   ngOnInit(): void {
-    this.findAll()
+    this.findAlTasks();
   }
 
-  findAll() {
+  findAlTasks() {
     this.taskService.findAll().subscribe((response) => {
       this.tasks = response
     })

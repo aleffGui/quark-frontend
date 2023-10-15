@@ -15,6 +15,15 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { DashboardComponent } from './components/view/dashboard/dashboard.component';
 import { TaskReadAllComponent } from './components/view/task/task-read-all/task-read-allcomponent';
 import { HttpClientModule } from "@angular/common/http";
+import { TaskCreateComponent } from './components/view/task/task-create/task-create.component';
+import { TaskFormComponent } from './components/template/task/task-form/task-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,10 +31,13 @@ import { HttpClientModule } from "@angular/common/http";
     NavComponent,
     FooterComponent,
     DashboardComponent,
-    TaskReadAllComponent
+    TaskReadAllComponent,
+    TaskCreateComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     MatToolbarModule,
@@ -33,9 +45,15 @@ import { HttpClientModule } from "@angular/common/http";
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
