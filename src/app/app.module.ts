@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TaskUpdateComponent } from './components/view/task/task-update/task-update.component';
 import { ConfirmModalComponent } from './components/template/modal/confirm-modal/confirm-modal.component';
 import { TaskDetailsModalComponent } from './components/template/modal/information-modal/task-details-modal.component';
+import { FilterTaskFormComponent } from './components/template/filter-task-form/filter-task-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { TaskDetailsModalComponent } from './components/template/modal/informati
     TaskFormComponent,
     TaskUpdateComponent,
     ConfirmModalComponent,
-    TaskDetailsModalComponent
+    TaskDetailsModalComponent,
+    FilterTaskFormComponent
   ],
   imports: [
     BrowserModule,
