@@ -26,6 +26,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import { TaskUpdateComponent } from './components/view/task/task-update/task-update.component';
 import { ConfirmModalComponent } from './components/template/modal/confirm-modal/confirm-modal.component';
+import { TaskDetailsModalComponent } from './components/template/modal/information-modal/task-details-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { ConfirmModalComponent } from './components/template/modal/confirm-modal
     TaskCreateComponent,
     TaskFormComponent,
     TaskUpdateComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    TaskDetailsModalComponent
   ],
   imports: [
     BrowserModule,

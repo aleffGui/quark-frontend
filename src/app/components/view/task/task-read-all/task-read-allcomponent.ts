@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from 'src/app/components/template/modal/confirm-modal/confirm-modal.component';
+import { TaskDetailsModalComponent } from 'src/app/components/template/modal/information-modal/task-details-modal.component';
 import { Task } from 'src/app/models/task';
 import { User } from 'src/app/models/user';
 import { TaskService } from 'src/app/services/task.service';
@@ -56,5 +57,17 @@ export class TaskReadAllComponent implements OnInit {
       if(value != 'close')
         this.ngOnInit();
     })
+  }
+  
+  openDetailsModal(task:any) {
+    const modalRef = this.ngbModal.open(TaskDetailsModalComponent)
+    modalRef.componentInstance.idTask = `${task.id}`;
+    modalRef.componentInstance.modalTitle = "Detalhes da Tarefa";
+    modalRef.componentInstance.title = `${task.title}`;
+    modalRef.componentInstance.description = `${task.description}`;
+    modalRef.componentInstance.priority = `${task.priority}`;
+    modalRef.componentInstance.deadline = `${task.deadline}`;
+    modalRef.componentInstance.responsible = `${task.responsible.name} ${task.responsible.lastName}`,
+    modalRef.componentInstance.status = `${task.status ? 'Concluída' : 'Em Andamento'}`
   }
 }

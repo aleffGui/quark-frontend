@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h1 class="modal-title" id="modal-title">{{modalTitle}} # {{idTask}}</h1>
+    <button
+        type="button"
+        class="btn-close"
+        aria-describedby="modal-title"
+        (click)="activeModal.dismiss('Cross click')"
+    ></button>
+</div>
+<div class="modal-body">
+    <h2>Título</h2>
+    <p>
+       {{title}}
+    </p>
+    <h2>Descrição</h2>
+    <p>
+        {{description}}
+    </p>
+    <h2>Responsável</h2>
+    <p>
+        {{responsible}}
+    </p>
+    <h2>Prioridade</h2>
+    <p>{{priority == 'LOW' ? 'Baixa' : priority == 'MEDIUM' ? 'Média' : 'Alta'}}</p>
+    <h2>Data</h2>
+    <p>{{deadline | date: 'dd/MM/yyyy'}}</p>
+    <h2>Status</h2>
+    <p>
+        {{status}}
+    </p>
+</div>
+<div class="modal-footer">
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</div>
