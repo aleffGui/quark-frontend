@@ -47,7 +47,7 @@ export class TaskFormComponent implements OnInit {
         this.taskForm.patchValue({
           title: this.task!.title,
           description: this.task!.description,
-          userId: this.task!.responsible!.id,
+          userId: this.task!.user!.id,
           priority: this.task!.priority,
           deadline: formattedDeadline,
         });

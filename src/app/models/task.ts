@@ -5,7 +5,7 @@ export interface Task {
     title: String;
     description: String;
     priority: String;
-    responsible?: User;
+    user?: User;
     deadline: any;
 
 }

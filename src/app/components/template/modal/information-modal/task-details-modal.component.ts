@@ -14,7 +14,7 @@ export class TaskDetailsModalComponent implements OnInit {
   @Input() description?: string;
   @Input() deadline?: string;
   @Input() priority?: string;
-  @Input() responsible?: string;
+  @Input() user?: string;
   @Input() status?: string;
 
   constructor(public activeModal: NgbActiveModal){}

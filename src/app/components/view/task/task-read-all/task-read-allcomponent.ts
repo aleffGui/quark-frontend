@@ -67,7 +67,7 @@ export class TaskReadAllComponent implements OnInit {
     modalRef.componentInstance.description = `${task.description}`;
     modalRef.componentInstance.priority = `${task.priority}`;
     modalRef.componentInstance.deadline = `${task.deadline}`;
-    modalRef.componentInstance.responsible = `${task.responsible.name} ${task.responsible.lastName}`,
+    modalRef.componentInstance.user = `${task.user.name} ${task.user.lastName}`,
     modalRef.componentInstance.status = `${task.status ? 'Concluída' : 'Em Andamento'}`
   }
 }

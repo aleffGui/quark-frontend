@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: 'app-filter-task-form',
-  templateUrl: './filter-task-form.component.html',
-  styleUrls: ['./filter-task-form.component.css']
+  selector: 'app-task-filter-form',
+  templateUrl: './task-filter-form.component.html',
+  styleUrls: ['./task-filter-form.component.css']
 })
-export class FilterTaskFormComponent {
+export class TaskFilterFormComponent {
 
   public filterTaskForm: FormGroup;
 
