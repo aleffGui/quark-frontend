@@ -13,7 +13,7 @@
                 <div class="col-md-4">
                     <mat-form-field class="w-100">
                         <mat-label>Responsável</mat-label>
-                        <mat-select formControlName="user">
+                        <mat-select formControlName="userId">
                             <mat-option value="1">João</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -22,9 +22,8 @@
                     <mat-form-field class="w-100">
                         <mat-label>Situação</mat-label>
                         <mat-select formControlName="status">
-                            <mat-option value="LOW">Baixa</mat-option>
-                            <mat-option value="MEDIUM">Média</mat-option>
-                            <mat-option value="HIGH">Alta</mat-option>
+                            <mat-option [value]="false">Em Andamento</mat-option>
+                            <mat-option [value]="true">Concluída</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -40,8 +39,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-start mt-2">
-                <button type="button" class="btn btn-warning me-2">Limpar Filtro</button>
-                <button class="btn btn-success">Filtrar</button>
+                <button (click)="clearFilter()" type="button" class="btn btn-warning me-2">Limpar Filtro</button>
+                <button (click)="filter()" class="btn btn-success">Filtrar</button>
             </div>
         </form>
     </div>

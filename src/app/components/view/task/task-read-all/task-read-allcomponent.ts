@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { filter } from 'rxjs';
 import { ConfirmModalComponent } from 'src/app/components/template/modal/confirm-modal/confirm-modal.component';
 import { TaskDetailsModalComponent } from 'src/app/components/template/modal/information-modal/task-details-modal.component';
 import { Task } from 'src/app/models/task';
@@ -18,17 +19,27 @@ export class TaskReadAllComponent implements OnInit {
 
   tasks: any = [];
   users: User[] = [];
-
+  pageSize = 20;
+  page = 0;
+  count = 0;
+  filterString='';
+  
   constructor(private taskService: TaskService, private ngbModal: NgbModal) {}
   
   ngOnInit(): void {
-    this.findAlTasks();
+    this.findAllTasks(this.filterString);
   }
 
-  findAlTasks() {
-    this.taskService.findAll().subscribe((response) => {
-      this.tasks = response
+  findAllTasks(filterString='') {
+  
+    this.taskService.findAll(filterString, this.page).subscribe((response) => {
+      this.tasks = response;
+      this.count = response.totalElements;
     })
+  }
+  handlePageChange(event:any) {
+    this.page = event - 1;
+    this.findAllTasks();
   }
   openConfirmationDelete(task:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)
@@ -47,7 +58,7 @@ export class TaskReadAllComponent implements OnInit {
   openConfirmationMarkAsComplete(task:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)
     modalRef.componentInstance.idObject = `${task.id}`;
-    modalRef.componentInstance.title = "Conluir Tarefa";
+    modalRef.componentInstance.title = "Concluir Tarefa";
     modalRef.componentInstance.subtitle = "Tem certeza que deseja marcar como concluída a tarefa";
     modalRef.componentInstance.objectName = `${task.title}`
     modalRef.componentInstance.labelButton = "Concluir";

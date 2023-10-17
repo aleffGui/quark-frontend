@@ -14,8 +14,8 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  findAll() : Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+  findAll(filter = '', pageNumber = 0) : Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}?page=${pageNumber}&${filter}`);
   }
   
   findById(idTask:any) : Observable<any> {

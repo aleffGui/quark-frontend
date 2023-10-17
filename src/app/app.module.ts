@@ -28,6 +28,7 @@ import { TaskUpdateComponent } from './components/view/task/task-update/task-upd
 import { ConfirmModalComponent } from './components/template/modal/confirm-modal/confirm-modal.component';
 import { TaskDetailsModalComponent } from './components/template/modal/information-modal/task-details-modal.component';
 import { TaskFilterFormComponent } from './components/template/filter-task-form/task-filter-form.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { TaskFilterFormComponent } from './components/template/filter-task-form/
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
