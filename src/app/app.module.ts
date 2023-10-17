@@ -29,6 +29,8 @@ import { ConfirmModalComponent } from './components/template/modal/confirm-modal
 import { TaskDetailsModalComponent } from './components/template/modal/information-modal/task-details-modal.component';
 import { TaskFilterFormComponent } from './components/template/filter-task-form/task-filter-form.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './components/view/login/login.component';
+import { HomeComponent } from './components/view/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TaskUpdateComponent,
     ConfirmModalComponent,
     TaskDetailsModalComponent,
-    TaskFilterFormComponent
+    TaskFilterFormComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
