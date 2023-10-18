@@ -17,12 +17,12 @@ export class TokenService {
       return null;
     }
   }
-  getToken(): string | null {
+  getToken(): any {
     return sessionStorage.getItem(this.tokenKey);
   }
 
   setToken(token: any): void {
-    sessionStorage.setItem(this.tokenKey, token.token);
+    sessionStorage.setItem(this.tokenKey, token);
   }
 
   removeToken(): void {

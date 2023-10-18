@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { DashboardComponent } from './components/view/dashboard/dashboard.component';
 import { TaskReadAllComponent } from './components/view/task/task-read-all/task-read-allcomponent';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TaskCreateComponent } from './components/view/task/task-create/task-create.component';
 import { TaskFormComponent } from './components/template/task/task-form/task-form.component';
 import {MatInputModule} from '@angular/material/input';
@@ -31,6 +31,7 @@ import { TaskFilterFormComponent } from './components/template/filter-task-form/
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/view/login/login.component';
 import { HomeComponent } from './components/view/home/home.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,11 @@ import { HomeComponent } from './components/view/home/home.component';
     ToastrModule.forRoot(),
     NgxPaginationModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

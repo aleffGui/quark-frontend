@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../models/task';
 import { NewTaskDto } from '../models/dtos/new.task.dto';
 
@@ -13,6 +13,7 @@ export class TaskService {
   private apiUrl = environment.apiUrl + "/tasks";
 
   constructor(private http: HttpClient) { }
+
 
   findAll(filter = '', pageNumber = 0) : Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}?page=${pageNumber}&${filter}`);

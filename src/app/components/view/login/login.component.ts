@@ -27,10 +27,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log(this.loginForm.value)
     this.authService.login(this.loginForm.value).subscribe((response) => {
         if(response) {
-          this.tokenService.setToken(response);
-          this.router.navigate(['']);
+          this.tokenService.setToken(response.body.token);
+          this.router.navigate(['/home']);
         }
     })
   }
