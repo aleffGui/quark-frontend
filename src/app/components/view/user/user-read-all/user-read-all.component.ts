@@ -33,15 +33,15 @@ export class UserReadAllComponent implements OnInit {
     this.page = event - 1;
     this.findAllUsersPaginated();
   }
-  openConfirmationDelete(task:any) {
+  openConfirmationDelete(user:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)
-    modalRef.componentInstance.idObject = `${task.id}`;
-    modalRef.componentInstance.title = "Remover Tarefa";
-    modalRef.componentInstance.subtitle = "Tem certeza que deseja remover a tarefa";
-    modalRef.componentInstance.objectName = `${task.title}`
+    modalRef.componentInstance.idObject = `${user.id}`;
+    modalRef.componentInstance.title = "Remover Usuário";
+    modalRef.componentInstance.subtitle = "Tem certeza que deseja removero usuário";
+    modalRef.componentInstance.objectName = `${user.firstName} ${user.lastName}`
     modalRef.componentInstance.labelButton = "Remover";
     modalRef.componentInstance.classButton = "danger"
-    modalRef.componentInstance.functionName = "deleteTask";
+    modalRef.componentInstance.functionName = "deleteUser";
     modalRef.result.then((value) => {
       if(value != 'close')
         this.ngOnInit();

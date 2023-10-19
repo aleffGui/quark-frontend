@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -20,7 +21,8 @@ export class ConfirmModalComponent implements OnInit {
   @Input() functionName?: string;
 
   constructor(public modal: NgbActiveModal, private taskService: TaskService, 
-    private toastService: ToastrService, private router: Router){}
+    private toastService: ToastrService, private router: Router,
+    private userService: UserService){}
   
   ngOnInit(): void {
   }
@@ -32,7 +34,10 @@ export class ConfirmModalComponent implements OnInit {
         break;
       case 'markTaskAsComplete':
         this.markTaskAsComplete();
-        break;  
+        break;
+      case 'deleteUser':
+        this.deleteUser();
+        break;       
     }
   }
   markTaskAsComplete() {
@@ -49,6 +54,18 @@ export class ConfirmModalComponent implements OnInit {
       this.toastService.success("Tarefa removida com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
       this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
+    })
+  }
+  deleteUser() {
+    this.userService.delete(this.idObject).subscribe(response => {
+      this.modal.close();
+      this.toastService.success("Usuário removida com sucesso", '', {positionClass: 'toast-bottom-center'});
+    }, err => {
+      if(err.error.message) {
+        this.toastService.error(`${err.error.message}`, '', {positionClass: 'toast-bottom-center'});
+      } else {
+        this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
+      }
     })
   }
 }
