@@ -20,6 +20,6 @@ export class TaskDetailsModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal){}
  
   ngOnInit(): void {
-    console.log(this.status);
+  
   }
 }

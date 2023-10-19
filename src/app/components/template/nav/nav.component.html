@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened>
         <mat-nav-list>
-            <a routerLink="/categorias" mat-list-item>
+            <a routerLink="" mat-list-item>
                 <div class="d-flex">
                     <i class="material-icons">home</i>
                     <span>Home</span>    
@@ -13,7 +13,7 @@
                     <span>Tarefas</span>    
                 </div>
             </a>
-            <a routerLink="/tarefas" mat-list-item>
+            <a *ngIf="role == 'ADMIN'" routerLink="/usuarios" mat-list-item>
                 <div class="d-flex">
                     <i class="material-icons">groups</i>
                     <span>Usuários</span>    

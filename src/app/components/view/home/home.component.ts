@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.tokenService.decodeToken(this.tokenService.getToken())
-    console.log(this.user)
   }
 
 

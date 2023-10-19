@@ -1,0 +1,43 @@
+<div class="card mt-2" style="margin-bottom: 0;">
+    <div class="card-body" style="padding: 10px;">
+        <div class="container">
+            <form [formGroup]="filterUserForm" (ngSubmit)="filter()">
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <mat-form-field class="w-100">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="id">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-8">
+                  <mat-form-field class="w-100">
+                    <mat-label>Nome/Sobrenome</mat-label>
+                    <input matInput formControlName="firstNameOrLastName">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row g-2 mt-2">
+                <div class="col-md-8">
+                  <mat-form-field class="w-100">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="userName">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="w-100">
+                    <mat-label>Permissão</mat-label>
+                    <mat-select formControlName="role">
+                      <mat-option value="ADMIN">Administrador</mat-option>
+                      <mat-option value="USER">Usuário</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="d-flex justify-content-start mt-2">
+                <button (click)="clearFilter()" type="button" class="btn btn-warning me-2">Limpar Filtro</button>
+                <button (click)="filter()" class="btn btn-success">Filtrar</button>
+              </div>
+            </form>
+          </div>
+    </div>
+</div>

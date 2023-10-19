@@ -13,7 +13,7 @@
             <mat-form-field class="w-100">
                 <mat-label>Responsável</mat-label>
               <mat-select formControlName="userId">
-                <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}} {{user.lastName}}</mat-option>
+                <mat-option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>

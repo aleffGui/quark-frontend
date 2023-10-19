@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="page-title mt-1">USUÁRIOS</h1>
+    <app-user-filter-form></app-user-filter-form>
+    <div class="d-flex justify-content-end mt-2">
+        <button type="button" class="btn btn-success"  [routerLink]="['/usuarios/criar']"><i class="bi bi-plus"></i> Novo Usuário</button>
+
+    </div>
+    <pagination-controls *ngIf="count > 20" previousLabel="Anterior" nextLabel="Próxima" (pageChange)="handlePageChange($event)"  (pageBoundsCorrection)="handlePageChange($event)"></pagination-controls>
+    <table class="table table-striped mt-2">
+        <colgroup>
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 30;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Username</th>
+                <th scope="col">Permissão</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users?.content | paginate: { itemsPerPage: pageSize,
+                currentPage: page + 1,
+                totalItems: count }">
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.role}}</td>
+                <td class="text-center">
+                    <button [routerLink]="['/usuarios/editar', user.id]" routerLinkActive="router-link-active"  type="button" class="btn btn-warning custom-btn-xs ms-1"><i class="bi bi-pencil-square"></i></button>
+                    <button (click)="openConfirmationDelete(user)" type="button" class="btn btn-danger custom-btn-xs ms-1 me-1"><i class="bi bi-trash3"></i></button>                
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls *ngIf="count > 20" previousLabel="Anterior" nextLabel="Próxima" (pageChange)="handlePageChange($event)"  (pageBoundsCorrection)="handlePageChange($event)"></pagination-controls>
+</div>

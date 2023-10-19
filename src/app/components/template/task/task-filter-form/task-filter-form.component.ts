@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
-import { TaskReadAllComponent } from '../../view/task/task-read-all/task-read-allcomponent';
+import { TaskReadAllComponent } from '../../../view/task/task-read-all/task-read-allcomponent';
 
 @Component({
   selector: 'app-task-filter-form',

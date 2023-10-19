@@ -8,10 +8,12 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class DashboardComponent implements OnInit {
  
- 
- constructor() {}
+ role:any;
+
+ constructor(private tokenService: TokenService) {}
  
   ngOnInit(): void {
+    this.role = this.tokenService.decodeToken(this.tokenService.getToken()).role;
   }
 
 }

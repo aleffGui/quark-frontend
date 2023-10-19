@@ -14,7 +14,27 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  findAll() : Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}`);
+  findAllPaginated(filter = '', pageNumber = 0) : Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}/paginated?page=${pageNumber}&${filter}`);
+  }
+
+  findAll() : Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}`);
+  }
+
+  findById(idUser:any) : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${idUser}`);
+  }
+
+  update(idUser:any, newUser: User) : Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${idUser}`, newUser);
+  }
+
+  insert(newUser:any) : Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, newUser);
+  }
+
+  delete(idUser:any) : Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${idUser}`);
   }
 }

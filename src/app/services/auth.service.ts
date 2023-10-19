@@ -3,6 +3,7 @@ import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserCredentials } from '../models/dtos/user.credentials';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
   private apiUrl = environment.apiUrl + "/auth";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
 
   login(credentials: UserCredentials) : Observable<any> {
@@ -20,5 +21,9 @@ export class AuthService {
       observe: 'response',
       responseType: 'json'
     });
+  }
+
+  isAuthenticated() {
+    return this.tokenService.getToken();
   }
 }

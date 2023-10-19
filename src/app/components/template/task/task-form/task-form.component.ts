@@ -19,7 +19,7 @@ export class TaskFormComponent implements OnInit {
   @Input() label: String = '';
 
   public taskForm: FormGroup;
-  public users: User[] = [];
+  public users:any;
   public task?: Task
   public idTask:any = null;
 

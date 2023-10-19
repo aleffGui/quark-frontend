@@ -27,11 +27,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { TaskUpdateComponent } from './components/view/task/task-update/task-update.component';
 import { ConfirmModalComponent } from './components/template/modal/confirm-modal/confirm-modal.component';
 import { TaskDetailsModalComponent } from './components/template/modal/information-modal/task-details-modal.component';
-import { TaskFilterFormComponent } from './components/template/filter-task-form/task-filter-form.component';
+import { TaskFilterFormComponent } from './components/template/task/task-filter-form/task-filter-form.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/view/login/login.component';
 import { HomeComponent } from './components/view/home/home.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserReadAllComponent } from './components/view/user/user-read-all/user-read-all.component';
+import { UserFilterFormComponent } from './components/template/user/user-filter-form/user-filter-form.component';
+import { UserFormComponent } from './components/template/user/user-form/user-form.component';
+import { UserCreateComponent } from './components/view/user/user-create/user-create.component';
+import { UserUpdateComponent } from './components/view/user/user-update/user-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +52,12 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     TaskDetailsModalComponent,
     TaskFilterFormComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UserReadAllComponent,
+    UserFilterFormComponent,
+    UserFormComponent,
+    UserCreateComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
