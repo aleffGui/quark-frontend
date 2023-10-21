@@ -76,11 +76,10 @@ export class UserFormComponent {
     })
   }
   updateUser() {
+  console.log("kkk")
     this.userService.update(this.idUser, this.userForm.value).subscribe((response) => {
-      if(response) {
-        this.toastr.success("Dados atualizados com sucesso", '', {positionClass: 'toast-bottom-center'})
+    this.toastr.success("Dados atualizados com sucesso", '', {positionClass: 'toast-bottom-center'})
         this.router.navigate(['/usuarios']);
-      }
     }, error => {
       if(error.error.message) {
         this.toastr.error(`${error.error.message}`, '', {positionClass: 'toast-bottom-center'})

@@ -24,10 +24,11 @@ export class TaskReadAllComponent implements OnInit {
   count = 0;
   filterString='';
   
-  constructor(private taskService: TaskService, private ngbModal: NgbModal) {}
+  constructor(private taskService: TaskService, private ngbModal: NgbModal, private userService: UserService) {}
   
   ngOnInit(): void {
     this.findAllTasks(this.filterString);
+    this.findAllUsers();
   }
 
   findAllTasks(filterString='') {
@@ -35,6 +36,12 @@ export class TaskReadAllComponent implements OnInit {
     this.taskService.findAll(filterString, this.page).subscribe((response) => {
       this.tasks = response;
       this.count = response.totalElements;
+    })
+  }
+
+  findAllUsers() {
+    this.userService.findAll().subscribe((response) => {
+      this.users = response;
     })
   }
   handlePageChange(event:any) {

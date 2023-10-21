@@ -59,7 +59,7 @@ export class ConfirmModalComponent implements OnInit {
   deleteUser() {
     this.userService.delete(this.idObject).subscribe(response => {
       this.modal.close();
-      this.toastService.success("Usuário removida com sucesso", '', {positionClass: 'toast-bottom-center'});
+      this.toastService.success("Usuário removido com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
       if(err.error.message) {
         this.toastService.error(`${err.error.message}`, '', {positionClass: 'toast-bottom-center'});

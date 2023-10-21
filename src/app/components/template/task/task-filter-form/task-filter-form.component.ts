@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
 import { TaskReadAllComponent } from '../../../view/task/task-read-all/task-read-allcomponent';
@@ -11,8 +11,9 @@ import { TaskReadAllComponent } from '../../../view/task/task-read-all/task-read
 export class TaskFilterFormComponent {
 
   public filterTaskForm: FormGroup;
+  @Input() users: any;
 
-  constructor( private fb: FormBuilder, private taskService: TaskService, private taskReadAllComponent: TaskReadAllComponent) {
+  constructor( private fb: FormBuilder, private taskReadAllComponent: TaskReadAllComponent) {
     this.filterTaskForm = this.fb.group({
       id: [''],
       titleOrDescription: [''],

@@ -33,11 +33,12 @@ export class UserReadAllComponent implements OnInit {
     this.page = event - 1;
     this.findAllUsersPaginated();
   }
+
   openConfirmationDelete(user:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)
     modalRef.componentInstance.idObject = `${user.id}`;
     modalRef.componentInstance.title = "Remover Usuário";
-    modalRef.componentInstance.subtitle = "Tem certeza que deseja removero usuário";
+    modalRef.componentInstance.subtitle = "Tem certeza que deseja remover o usuário";
     modalRef.componentInstance.objectName = `${user.firstName} ${user.lastName}`
     modalRef.componentInstance.labelButton = "Remover";
     modalRef.componentInstance.classButton = "danger"
