@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/template/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -64,6 +64,7 @@ import { UserUpdateComponent } from './components/view/user/user-update/user-upd
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
+    NgbTooltipModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
