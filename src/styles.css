@@ -12,5 +12,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ngx-pagination, .pagination-previous {
   padding-left: 0px !important;
 }
+.mat-mdc-form-field-error-wrapper {
+  padding-left: 0 !important;
+}
 @import 'ngx-toastr/toastr';
   

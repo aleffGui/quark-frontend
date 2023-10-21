@@ -7,6 +7,12 @@
             <mat-form-field class="w-100">
               <mat-label>Título</mat-label>
               <input formControlName="title" matInput placeholder="Digite o título">
+              <mat-error *ngIf="taskForm.controls['title'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
+              <mat-error *ngIf="taskForm.controls['title'].hasError('maxlength')">
+                O título deve ter no máximo 100 caracteres.
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
@@ -15,18 +21,27 @@
               <mat-select formControlName="userId">
                 <mat-option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</mat-option>
               </mat-select>
+              <mat-error *ngIf="taskForm.controls['userId'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <mat-form-field class="w-100">
+            <mat-form-field class="w-100 mt-1">
               <mat-label>Descrição</mat-label>
               <textarea formControlName="description" matInput placeholder="Digite a descrição" rows="3"></textarea>
+              <mat-error *ngIf="taskForm.controls['description'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
+              <mat-error *ngIf="taskForm.controls['description'].hasError('maxlength')">
+                A descrição deve ter no máximo 255 caracteres..
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
-        <div class="row">
+        <div class="row mt-1">
           <div class="col-md-6">
             <mat-form-field class="w-100">
                 <mat-label>Prioridade</mat-label>
@@ -35,12 +50,18 @@
                   <mat-option value="MEDIUM">Média</mat-option>
                   <mat-option value="HIGH">Alta</mat-option>
                 </mat-select>
+                <mat-error *ngIf="taskForm.controls['priority'].hasError('required')">
+                  Favor preencher este campo.
+                </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field class="w-100">
               <mat-label>Prazo de Entrega</mat-label>
               <input formControlName="deadline" matInput type="date">
+              <mat-error *ngIf="taskForm.controls['deadline'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
         </div>

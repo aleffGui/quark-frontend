@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
@@ -18,7 +18,6 @@ export class UserFormComponent {
   public users: User[] = [];
   public user?: User
   public idUser:any = null;
-
   constructor
   (
     private fb: FormBuilder, private userService: UserService, private toastr: ToastrService,
@@ -29,13 +28,14 @@ export class UserFormComponent {
       lastName: ['', [Validators.required, Validators.maxLength(255)]],
       userName: ['', Validators.required],
       role: [null, Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      passwordConfirm: ['', Validators.required]
     });
-    
   }
   ngOnInit(): void {
     if(this.isUpdate) {
       this.userForm.get('password')?.clearValidators();
+      this.userForm.get('passwordConfirm')?.clearValidators();
       this.idUser = this.actRoute.snapshot.paramMap.get('id');
       this.userService.findById(this.idUser).subscribe((response) => {
         this.user = response;
@@ -51,15 +51,20 @@ export class UserFormComponent {
   }
 
   validateForm() {
-    if(this.userForm.invalid) {
-      for (const controlName in this.userForm.controls) {
-        if (this.userForm.controls[controlName].invalid) {
-          this.userForm.controls[controlName].markAsTouched();
+    if(this.userForm.get('passwordConfirm')?.value !== this.userForm.get('password')?.value) {
+      this.toastr.error('Senhas não coincidem.', '', {positionClass: 'toast-bottom-center'})
+    } else {
+      if(this.userForm.invalid) {
+        for (const controlName in this.userForm.controls) {
+          if (this.userForm.controls[controlName].invalid) {
+            this.userForm.controls[controlName].markAsTouched();
+          }
         }
+        return;
       }
-      return;
+      this.userForm.removeControl('passwordConfirm');
+      this.isUpdate ? this.updateUser() : this.saveUser()
     }
-    this.isUpdate ? this.updateUser() : this.saveUser()
   }
   
   saveUser() {

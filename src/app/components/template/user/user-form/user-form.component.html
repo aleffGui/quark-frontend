@@ -7,43 +7,61 @@
             <mat-form-field class="w-100">
               <mat-label>Nome</mat-label>
               <input matInput formControlName="firstName">
+              <mat-error *ngIf="userForm.controls['firstName'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field class="w-100">
               <mat-label>Sobrenome</mat-label>
               <input matInput formControlName="lastName">
+              <mat-error *ngIf="userForm.controls['lastName'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
-        <div class="row g-2 mt-2">
+        <div class="row g-2 mt-1">
           <div class="col-md-6">
             <mat-form-field class="w-100">
               <mat-label>UserName</mat-label>
               <input matInput formControlName="userName">
+              <mat-error *ngIf="userForm.controls['userName'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field class="w-100">
-              <mat-label>Role</mat-label>
+              <mat-label>Permissão</mat-label>
               <mat-select formControlName="role">
                 <mat-option value="ADMIN">Administrador</mat-option>
                 <mat-option value="USER">Usuário</mat-option>
               </mat-select>
+              <mat-error *ngIf="userForm.controls['role'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
-        <div class="row g-2 mt-2">
+        <div class="row g-2 mt-1">
           <div class="col-md-6">
             <mat-form-field class="w-100">
               <mat-label>Senha</mat-label>
               <input matInput type="password" formControlName="password">
+              <mat-error *ngIf="userForm.controls['password'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field class="w-100">
               <mat-label>Confirmar Senha</mat-label>
-              <input matInput type="passwordConfirm">
+              <input matInput formControlName="passwordConfirm" type="password">
+              <mat-error *ngIf="userForm.controls['passwordConfirm'].hasError('required')">
+                Favor preencher este campo.
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
