@@ -16,7 +16,7 @@
   ```
   npm install -g @angular/cli
   ```
-- Navegar até a pasta do projeto clonado e executar o comando abaixo para instalar as dependencias:
+- Navegar até a pasta raíz do projeto clonado e executar o comando abaixo para instalar as dependencias:
   ```
   npm i
   ```
