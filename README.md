@@ -1,27 +1,30 @@
 # QuarkFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## Instalação do Projeto
 
-## Development server
+- Clonar o projeto, execute o comando abaixo:
+  ```
+  git clone https://github.com/aleffGui/quark-frontend.git
+  ```
+- Verificar se o node está instalado:
+  ```
+  node -v
+  ```
+- Caso não esteja, [instalar aqui](https://nodejs.org/pt-br/download)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Instalar o Angular (esse projeto foi desenvolvido com a versão 16.2.5):
+  ```
+  npm install -g @angular/cli
+  ```
+- Navegar até a pasta do projeto clonado e executar o comando abaixo para instalar as dependencias:
+  ```
+  npm i
+  ```
+- Finalizada a instalação das dependencias, executar o comando abaixo:
+  ```
+  ng serve
+  ```
+- O projeto estará em execução, para acessá-lo basta abrir o navegador e acessar o endereço:
+  ```
+  localhost:4200
+  ```
