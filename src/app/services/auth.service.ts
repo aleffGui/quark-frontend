@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserCredentials } from '../models/dtos/user.credentials';
 import { TokenService } from './token.service';
+import { environment } from '../config';
 
 @Injectable({
   providedIn: 'root'
