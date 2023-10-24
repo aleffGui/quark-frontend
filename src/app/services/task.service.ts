@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../models/task';
 import { NewTaskDto } from '../models/dtos/new.task.dto';
+import { environment } from '../config';
 
 @Injectable({
   providedIn: 'root'
