@@ -37,6 +37,8 @@ import { UserFilterFormComponent } from './components/template/user/user-filter-
 import { UserFormComponent } from './components/template/user/user-form/user-form.component';
 import { UserCreateComponent } from './components/view/user/user-create/user-create.component';
 import { UserUpdateComponent } from './components/view/user/user-update/user-update.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxLoadingModule } from 'ngx-loading';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +79,11 @@ import { UserUpdateComponent } from './components/view/user/user-update/user-upd
     ReactiveFormsModule,
     MatSnackBarModule,
     ToastrModule.forRoot(),
-    NgxPaginationModule
+    NgxLoadingModule.forRoot({
+      
+    }),
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
   providers: [DatePipe, {
     provide: HTTP_INTERCEPTORS,

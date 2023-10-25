@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserCredentials } from '../models/dtos/user.credentials';
 import { TokenService } from './token.service';
-import { environment } from '../config';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })

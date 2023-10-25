@@ -14,6 +14,7 @@ import { TokenService } from 'src/app/services/token.service';
 export class LoginComponent implements OnInit {
   
   public loginForm: FormGroup;
+  public loading: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, 
     private tokenService: TokenService, private router: Router, private toastService:ToastrService) {
@@ -40,12 +41,15 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
+    this.loading = true;
     this.authService.login(this.loginForm.value).subscribe((response) => {
         if(response) {
+          this.loading = false;
           this.tokenService.setToken(response.body.token);
           this.router.navigate(['/home']);
         }
     }, err => {
+      this.loading = false;
       this.toastService.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'});
     })
   }
