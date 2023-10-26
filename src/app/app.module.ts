@@ -38,6 +38,7 @@ import { UserFormComponent } from './components/template/user/user-form/user-for
 import { UserCreateComponent } from './components/view/user/user-create/user-create.component';
 import { UserUpdateComponent } from './components/view/user/user-update/user-update.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxLoadingModule } from 'ngx-loading';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +79,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatSnackBarModule,
     ToastrModule.forRoot(),
+    NgxLoadingModule.forRoot({backdropBackgroundColour: "rgba(0,0,0,0.1)",}),
     NgxPaginationModule,
     MatProgressSpinnerModule
   ],
