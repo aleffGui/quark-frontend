@@ -91,12 +91,15 @@ export class TaskFormComponent implements OnInit {
     })
   }
   updateTask() {
+    this.loading = true;
     this.taskService.update(this.idTask, this.taskForm.value).subscribe((response) => {
       if(response) {
         this.toastr.success("Dados atualizados com sucesso", '', {positionClass: 'toast-bottom-center'})
         this.router.navigate(['/tarefas']);
+        this.loading = false;
       }
     }, err => {
+      this.loading = false;
       this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
     })
   }
