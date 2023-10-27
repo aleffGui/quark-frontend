@@ -22,6 +22,7 @@ export class TaskFormComponent implements OnInit {
   public users:any;
   public task?: Task
   public idTask:any = null;
+  public loading = false;
 
   constructor
   (
@@ -40,17 +41,25 @@ export class TaskFormComponent implements OnInit {
   }
   ngOnInit(): void {
     if(this.isUpdate) {
+      this.loading = true;
       this.idTask = this.actRoute.snapshot.paramMap.get('id');
       this.taskService.findById(this.idTask).subscribe((response) => {
-        this.task = response;
-        const formattedDeadline = this.datePipe.transform(this.task!.deadline, 'yyyy-MM-dd');
-        this.taskForm.patchValue({
-          title: this.task!.title,
-          description: this.task!.description,
-          userId: this.task!.user!.id,
-          priority: this.task!.priority,
-          deadline: formattedDeadline,
-        });
+        if(response) {
+          this.loading = false;
+          this.task = response;
+          const formattedDeadline = this.datePipe.transform(this.task!.deadline, 'yyyy-MM-dd');
+          this.taskForm.patchValue({
+            title: this.task!.title,
+            description: this.task!.description,
+            userId: this.task!.user!.id,
+            priority: this.task!.priority,
+            deadline: formattedDeadline,
+          });
+        }
+      }, err => {
+        this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
+        this.router.navigate(['/tarefas'])
+        this.loading = false;
       })
     }
     this.findAllUsers();
@@ -71,12 +80,14 @@ export class TaskFormComponent implements OnInit {
   }
   
   saveTask() {
+    this.loading = true;
     this.taskService.insert(this.taskForm.value).subscribe(response => {
         this.toastr.success("Dados salvos com sucesso", '', {positionClass: 'toast-bottom-center'});
         this.router.navigate(['/tarefas']);
-      
+        this.loading = false;
     }, error => {
       this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
+      this.loading = false;
     })
   }
   updateTask() {

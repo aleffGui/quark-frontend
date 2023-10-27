@@ -14,6 +14,7 @@ export class UserFormComponent {
   @Input() isUpdate: Boolean = false;
   @Input() label: String = '';
 
+  public loading = false;
   public userForm: FormGroup;
   public users: User[] = [];
   public user?: User
@@ -34,18 +35,24 @@ export class UserFormComponent {
   }
   ngOnInit(): void {
     if(this.isUpdate) {
+      this.loading = true;
       this.userForm.get('password')?.clearValidators();
       this.userForm.get('passwordConfirm')?.clearValidators();
       this.idUser = this.actRoute.snapshot.paramMap.get('id');
       this.userService.findById(this.idUser).subscribe((response) => {
-        this.user = response;
-
-        this.userForm.patchValue({
-          firstName: this.user!.firstName,
-          lastName: this.user!.lastName,
-          userName: this.user!.userName,
-          role: this.user!.role,
-        });
+        if(response) {
+          this.loading = false;
+          this.user = response;
+          this.userForm.patchValue({
+            firstName: this.user!.firstName,
+            lastName: this.user!.lastName,
+            userName: this.user!.userName,
+            role: this.user!.role,
+          });
+        }
+      }, err => {
+        this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
+        this.router.navigate(['/usuarios'])
       })
     }
   }
@@ -68,29 +75,33 @@ export class UserFormComponent {
   }
   
   saveUser() {
+    this.loading = true;
     this.userService.insert(this.userForm.value).subscribe(response => {
         this.toastr.success("Dados salvos com sucesso", '', {positionClass: 'toast-bottom-center'});
         this.router.navigate(['/usuarios']);
-      
+        this.loading = false;
     }, error => {
       if(error.error.message) {
         this.toastr.error(`${error.error.message}`, '', {positionClass: 'toast-bottom-center'})
       } else {
         this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
       }
+      this.loading = false;
     })
   }
   updateUser() {
-  console.log("kkk")
+    this.loading = true;
     this.userService.update(this.idUser, this.userForm.value).subscribe((response) => {
     this.toastr.success("Dados atualizados com sucesso", '', {positionClass: 'toast-bottom-center'})
         this.router.navigate(['/usuarios']);
+        this.loading = false;
     }, error => {
       if(error.error.message) {
         this.toastr.error(`${error.error.message}`, '', {positionClass: 'toast-bottom-center'})
       } else {
         this.toastr.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
       }
+      this.loading = false;
     })
   }
 }

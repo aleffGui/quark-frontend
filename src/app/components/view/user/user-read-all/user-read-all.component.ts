@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { ConfirmModalComponent } from 'src/app/components/template/modal/confirm-modal/confirm-modal.component';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,13 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserReadAllComponent implements OnInit {
 
+  loading = true;
   users:any;
   pageSize = 20;
   page = 0;
   count = 0;
   filterString='';
 
-  constructor(private ngbModal: NgbModal, private userService: UserService) {}
+  constructor(private ngbModal: NgbModal, private userService: UserService, private toastService: ToastrService) {}
   
   ngOnInit(): void {
     this.findAllUsersPaginated()
@@ -24,8 +26,14 @@ export class UserReadAllComponent implements OnInit {
 
   findAllUsersPaginated(filter = '') {
     this.userService.findAllPaginated(filter, this.page).subscribe((response) => {
-      this.users = response;
-      this.count = response.totalElements;
+      if(response) {
+        this.loading = false;
+        this.users = response;
+        this.count = response.totalElements;
+      }
+    }, err => {
+      this.loading = false;
+      this.toastService.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
     })
   }
 

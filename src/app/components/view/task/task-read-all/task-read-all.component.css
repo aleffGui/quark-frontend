@@ -4,3 +4,7 @@
     line-height: 1.25;
     border-radius: 0.2rem;
   }
+  .custom-spinner {
+    width: 30px; /* Defina o tamanho desejado */
+    height: 30px; /* Defina o tamanho desejado */
+}

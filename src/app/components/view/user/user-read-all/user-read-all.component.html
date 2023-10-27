@@ -6,7 +6,11 @@
 
     </div>
     <pagination-controls *ngIf="count > 20" previousLabel="Anterior" nextLabel="Próxima" (pageChange)="handlePageChange($event)"  (pageBoundsCorrection)="handlePageChange($event)"></pagination-controls>
-    <table class="table table-striped mt-2">
+    <div class="d-flex justify-content-center">
+        <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+        <span *ngIf="users?.content?.length == 0">Nenhum usuário encontrado.</span>
+    </div>
+    <table *ngIf="!loading && users?.content?.length > 0" class="table table-striped mt-2">
         <colgroup>
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 25%;">

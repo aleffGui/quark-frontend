@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs';
 import { ConfirmModalComponent } from 'src/app/components/template/modal/confirm-modal/confirm-modal.component';
 import { TaskDetailsModalComponent } from 'src/app/components/template/modal/information-modal/task-details-modal.component';
@@ -16,7 +17,8 @@ import { UserService } from 'src/app/services/user.service';
 export class TaskReadAllComponent implements OnInit {
   
   @ViewChild("tableTasks") tableTasks: any;
-
+  
+  loading = true;
   tasks: any = [];
   users: User[] = [];
   pageSize = 20;
@@ -24,7 +26,7 @@ export class TaskReadAllComponent implements OnInit {
   count = 0;
   filterString='';
   
-  constructor(private taskService: TaskService, private ngbModal: NgbModal, private userService: UserService) {}
+  constructor(private taskService: TaskService, private ngbModal: NgbModal, private userService: UserService, private toastService: ToastrService) {}
   
   ngOnInit(): void {
     this.findAllTasks(this.filterString);
@@ -34,8 +36,14 @@ export class TaskReadAllComponent implements OnInit {
   findAllTasks(filterString='') {
   
     this.taskService.findAll(filterString, this.page).subscribe((response) => {
-      this.tasks = response;
-      this.count = response.totalElements;
+      if(response) {
+        this.loading = false;
+        this.tasks = response;
+        this.count = response.totalElements;
+      }
+    }, err => {
+      this.loading = false;
+      this.toastService.error("Algum erro ocorreu", '', {positionClass: 'toast-bottom-center'})
     })
   }
 

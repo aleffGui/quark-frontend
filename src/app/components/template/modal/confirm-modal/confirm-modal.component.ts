@@ -45,6 +45,7 @@ export class ConfirmModalComponent implements OnInit {
       this.modal.close();
       this.toastService.success("Tarefa concluída com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
+      this.modal.close();
       this.toastService.error("Não foi possível concluir", '', {positionClass: 'toast-bottom-center'});
     })
   }
@@ -53,6 +54,7 @@ export class ConfirmModalComponent implements OnInit {
       this.modal.close();
       this.toastService.success("Tarefa removida com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
+      this.modal.close();
       this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
     })
   }
@@ -66,6 +68,7 @@ export class ConfirmModalComponent implements OnInit {
       } else {
         this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
       }
+      this.modal.close();
     })
   }
 }
