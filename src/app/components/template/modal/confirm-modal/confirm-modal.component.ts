@@ -39,28 +39,24 @@ export class ConfirmModalComponent implements OnInit {
         this.deleteUser();
         break;       
     }
+    this.modal.close();
   }
   markTaskAsComplete() {
     this.taskService.markTaskAsComplete(this.idObject).subscribe(response => {
-      this.modal.close();
       this.toastService.success("Tarefa concluída com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
-      this.modal.close();
       this.toastService.error("Não foi possível concluir", '', {positionClass: 'toast-bottom-center'});
     })
   }
   deleteTask() {
     this.taskService.delete(this.idObject).subscribe(response => {
-      this.modal.close();
       this.toastService.success("Tarefa removida com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
-      this.modal.close();
       this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
     })
   }
   deleteUser() {
     this.userService.delete(this.idObject).subscribe(response => {
-      this.modal.close();
       this.toastService.success("Usuário removido com sucesso", '', {positionClass: 'toast-bottom-center'});
     }, err => {
       if(err.error.message) {
@@ -68,7 +64,6 @@ export class ConfirmModalComponent implements OnInit {
       } else {
         this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
       }
-      this.modal.close();
     })
   }
 }
