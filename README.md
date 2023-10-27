@@ -1,6 +1,6 @@
 # QuarkFront
 
-## Para acessar o projeto completo, [clique aqui](https://taskmanager-cf361.web.app/)
+## Para acessar o projeto completo, [clique aqui](https://quark-taskmanager.netlify.app)
 
 ## Instalação do Projeto Localmente
 
