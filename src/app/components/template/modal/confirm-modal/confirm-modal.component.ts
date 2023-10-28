@@ -39,31 +39,49 @@ export class ConfirmModalComponent implements OnInit {
         this.deleteUser();
         break;       
     }
-    this.modal.dismiss("confirm");
   }
+
   markTaskAsComplete() {
-    this.taskService.markTaskAsComplete(this.idObject).subscribe(response => {
-      this.toastService.success("Tarefa concluída com sucesso", '', {positionClass: 'toast-bottom-center'});
-    }, err => {
-      this.toastService.error("Não foi possível concluir", '', {positionClass: 'toast-bottom-center'});
-    })
-  }
-  deleteTask() {
-    this.taskService.delete(this.idObject).subscribe(response => {
-      this.toastService.success("Tarefa removida com sucesso", '', {positionClass: 'toast-bottom-center'});
-    }, err => {
-      this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
-    })
-  }
-  deleteUser() {
-    this.userService.delete(this.idObject).subscribe(response => {
-      this.toastService.success("Usuário removido com sucesso", '', {positionClass: 'toast-bottom-center'});
-    }, err => {
-      if(err.error.message) {
-        this.toastService.error(`${err.error.message}`, '', {positionClass: 'toast-bottom-center'});
-      } else {
-        this.toastService.error("Não foi possível remover", '', {positionClass: 'toast-bottom-center'});
+    this.taskService.markTaskAsComplete(this.idObject).subscribe(
+      response => {
+        this.toastService.success("Tarefa concluída com sucesso", '', { positionClass: 'toast-bottom-center' });
+      },
+      err => {
+        this.toastService.error("Não foi possível concluir", '', { positionClass: 'toast-bottom-center' });
       }
-    })
+    ).add(() => {
+      this.modal.close("confirm");
+    });
   }
+  
+  deleteTask() {
+    this.taskService.delete(this.idObject).subscribe(
+      response => {
+        this.toastService.success("Tarefa removida com sucesso", '', { positionClass: 'toast-bottom-center' });
+      },
+      err => {
+        this.toastService.error("Não foi possível remover", '', { positionClass: 'toast-bottom-center' });
+      }
+    ).add(() => {
+      this.modal.close("confirm");
+    });
+  }
+  
+  deleteUser() {
+    this.userService.delete(this.idObject).subscribe(
+      response => {
+        this.toastService.success("Usuário removido com sucesso", '', { positionClass: 'toast-bottom-center' });
+      },
+      err => {
+        if (err.error.message) {
+          this.toastService.error(`${err.error.message}`, '', { positionClass: 'toast-bottom-center' });
+        } else {
+          this.toastService.error("Não foi possível remover", '', { positionClass: 'toast-bottom-center' });
+        }
+      }
+    ).add(() => {
+      this.modal.close("confirm");
+    });
+  }
+  
 }

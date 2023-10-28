@@ -79,8 +79,8 @@ export class TaskReadAllComponent implements OnInit {
     modalRef.componentInstance.labelButton = "Concluir";
     modalRef.componentInstance.classButton = "success"
     modalRef.componentInstance.functionName = "markTaskAsComplete";
-    modalRef.result.then((value) => {
-      if(value != 'close')
+    modalRef.result.then((result) => {
+      if(result != 'close')
         this.ngOnInit();
     })
   }
