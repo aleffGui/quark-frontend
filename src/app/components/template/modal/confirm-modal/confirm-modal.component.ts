@@ -39,7 +39,7 @@ export class ConfirmModalComponent implements OnInit {
         this.deleteUser();
         break;       
     }
-    this.modal.close();
+    this.modal.dismiss("confirm");
   }
   markTaskAsComplete() {
     this.taskService.markTaskAsComplete(this.idObject).subscribe(response => {
