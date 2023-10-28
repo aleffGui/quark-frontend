@@ -14,5 +14,8 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('close')">Cancelar</button>
-    <button type="button" [class]="'btn btn-' + classButton" (click)="confirm()">{{ labelButton }}</button>
+    <button type="button" [class]="'btn btn-' + classButton" (click)="confirm()">
+        <ng-container *ngIf="!confirmIsClicked; else spinnerContent">{{labelButton}}</ng-container>
+        <ng-template #spinnerContent><mat-spinner [diameter]="22"></mat-spinner></ng-template>
+    </button>
 </div>

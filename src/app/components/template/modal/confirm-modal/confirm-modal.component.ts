@@ -20,6 +20,7 @@ export class ConfirmModalComponent implements OnInit {
   @Input() classButton?: string;
   @Input() functionName?: string;
 
+  confirmIsClicked: boolean = false;
   constructor(public modal: NgbActiveModal, private taskService: TaskService, 
     private toastService: ToastrService, private router: Router,
     private userService: UserService){}
@@ -28,6 +29,7 @@ export class ConfirmModalComponent implements OnInit {
   }
 
   confirm() {
+    this.confirmIsClicked = true;
     switch(this.functionName) {
       case 'deleteTask':
         this.deleteTask();
@@ -51,6 +53,7 @@ export class ConfirmModalComponent implements OnInit {
       }
     ).add(() => {
       this.modal.close("confirm");
+      this.confirmIsClicked = false;
     });
   }
   
@@ -64,6 +67,7 @@ export class ConfirmModalComponent implements OnInit {
       }
     ).add(() => {
       this.modal.close("confirm");
+      this.confirmIsClicked = false;
     });
   }
   
@@ -81,6 +85,7 @@ export class ConfirmModalComponent implements OnInit {
       }
     ).add(() => {
       this.modal.close("confirm");
+      this.confirmIsClicked = false;
     });
   }
   
