@@ -1,7 +1,6 @@
 # Frontend do TaskManager
 
 ## Para acessar o projeto completo, [clique aqui](https://quark-taskmanager.netlify.app)
-## Descrição da API de Gerenciamento de Tarefas
 ## Instalação do Projeto Localmente
 
 - Clonar o projeto, execute o comando abaixo:
