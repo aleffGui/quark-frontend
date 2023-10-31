@@ -10,6 +10,8 @@ import { UserReadAllComponent } from './components/view/user/user-read-all/user-
 import { UserCreateComponent } from './components/view/user/user-create/user-create.component';
 import { UserUpdateComponent } from './components/view/user/user-update/user-update.component';
 import { AuthGuard } from './services/guard/auth.guard';
+import { AdminGuard } from './services/guard/admin.guard';
+import { AccessDeniedComponent } from './components/template/access-denied/access-denied.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, canActivate: [AuthGuard], children: [
@@ -17,9 +19,10 @@ const routes: Routes = [
     {path: 'tarefas', component: TaskReadAllComponent},
     {path: 'tarefas/criar', component: TaskCreateComponent},
     {path: 'tarefas/editar/:id', component: TaskUpdateComponent},
-    {path: 'usuarios', component: UserReadAllComponent},
-    {path: 'usuarios/criar', component: UserCreateComponent},
-    {path: 'usuarios/editar/:id', component: UserUpdateComponent}
+    {path: 'usuarios', component: UserReadAllComponent, canActivate: [AdminGuard]},
+    {path: 'usuarios/criar', component: UserCreateComponent, canActivate: [AdminGuard]},
+    {path: 'usuarios/editar/:id', component: UserUpdateComponent, canActivate: [AdminGuard]},
+    {path: 'acesso-negado', component: AccessDeniedComponent}
   ]},
   {path: 'login', component: LoginComponent},
   { path: '**', redirectTo: 'home'},

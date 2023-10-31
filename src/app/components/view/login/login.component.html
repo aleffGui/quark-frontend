@@ -13,12 +13,18 @@
               <mat-form-field class="w-100">
                 <mat-label>Usuário</mat-label>
                 <input formControlName="userName" matInput placeholder="Digite seu usuário" id="username">
+                <mat-error *ngIf="loginForm.controls['userName'].hasError('required')">
+                  Favor preencher este campo.
+                </mat-error>
               </mat-form-field>
             </div>
             <div class="mb-3">
               <mat-form-field class="w-100">
                 <mat-label>Senha</mat-label>
                 <input formControlName="password" matInput type="password" placeholder="Digite sua senha" id="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                  Favor preencher este campo.
+                </mat-error>
               </mat-form-field>
             </div>
             <button (click)="validateForm()" type="submit" class="btn btn-primary btn-block">Entrar</button>

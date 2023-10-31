@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
   private apiUrl = environment.apiUrl + "/users";
-
+  private _user:any = null;
   constructor(private http: HttpClient) { }
 
   findAllPaginated(filter = '', pageNumber = 0) : Observable<any> {
@@ -35,5 +35,11 @@ export class UserService {
 
   delete(idUser:any) : Observable<any> {
     return this.http.delete(`${this.apiUrl}/${idUser}`);
+  }
+  get user() {
+    return this._user;
+  }
+  set user(user:any) {
+    this._user = user;
   }
 }

@@ -39,6 +39,7 @@ import { UserCreateComponent } from './components/view/user/user-create/user-cre
 import { UserUpdateComponent } from './components/view/user/user-update/user-update.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxLoadingModule } from 'ngx-loading';
+import { AccessDeniedComponent } from './components/template/access-denied/access-denied.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     UserFilterFormComponent,
     UserFormComponent,
     UserCreateComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
