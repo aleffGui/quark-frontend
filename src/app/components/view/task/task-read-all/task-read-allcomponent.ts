@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs';
@@ -26,7 +27,7 @@ export class TaskReadAllComponent implements OnInit {
   count = 0;
   filterString='';
   
-  constructor(private taskService: TaskService, private ngbModal: NgbModal, private userService: UserService, private toastService: ToastrService) {}
+  constructor(private taskService: TaskService, private ngbModal: NgbModal, private userService: UserService, private toastService: ToastrService, private router: Router) {}
   
   ngOnInit(): void {
     this.findAllTasks(this.filterString);
@@ -100,5 +101,9 @@ export class TaskReadAllComponent implements OnInit {
     modalRef.componentInstance.deadline = `${task.deadline}`;
     modalRef.componentInstance.user = `${task.user.firstName} ${task.user.lastName}`,
     modalRef.componentInstance.status = `${task.status ? 'Concluída' : 'Em Andamento'}`
+  }
+
+  goToUpdateTask(idTask:any) {
+    this.router.navigate(['/tarefas/editar', idTask])
   }
 }
