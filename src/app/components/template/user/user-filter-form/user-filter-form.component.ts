@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserReadAllComponent } from 'src/app/components/view/user/user-read-all/user-read-all.component';
 import { UserService } from 'src/app/services/user.service';
@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserFilterFormComponent {
 
   filterUserForm: FormGroup;
+  @Output() filterStringChanged = new EventEmitter<string>();
 
   constructor( private fb: FormBuilder, private userService: UserService, private userReadAllComponent: UserReadAllComponent) {
     this.filterUserForm = this.fb.group({
@@ -35,7 +36,7 @@ export class UserFilterFormComponent {
       .map(key => `${key}=${filterParams[key]}`)
       .join('&');
  
-    this.userReadAllComponent.findAllUsersPaginated(filterString);
+    this.filterStringChanged.emit(filterString);
   }
 
   clearFilter() {

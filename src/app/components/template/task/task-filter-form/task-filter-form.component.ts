@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
 import { TaskReadAllComponent } from '../../../view/task/task-read-all/task-read-allcomponent';
@@ -12,6 +12,7 @@ export class TaskFilterFormComponent {
 
   public filterTaskForm: FormGroup;
   @Input() users: any;
+  @Output() filterStringChanged = new EventEmitter<string>();
 
   constructor( private fb: FormBuilder, private taskReadAllComponent: TaskReadAllComponent) {
     this.filterTaskForm = this.fb.group({
@@ -38,11 +39,11 @@ export class TaskFilterFormComponent {
       .map(key => `${key}=${filterParams[key]}`)
       .join('&');
  
-    this.taskReadAllComponent.findAllTasks(filterString);
+    this.filterStringChanged.emit(filterString);
   }
 
   clearFilter() {
     this.filterTaskForm.reset();
-    this.taskReadAllComponent.findAllTasks();
+    this.filterStringChanged.emit('');
   }
 }

@@ -54,7 +54,12 @@ export class TaskReadAllComponent implements OnInit {
   }
   handlePageChange(event:any) {
     this.page = event - 1;
-    this.findAllTasks();
+    this.findAllTasks(this.filterString);
+  }
+  onFilterStringChanged(newFilterString:string) {
+    this.page = 0;
+    this.filterString = newFilterString;
+    this.findAllTasks(this.filterString);
   }
   openConfirmationDelete(task:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)

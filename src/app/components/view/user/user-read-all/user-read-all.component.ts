@@ -39,9 +39,13 @@ export class UserReadAllComponent implements OnInit {
 
   handlePageChange(event:any) {
     this.page = event - 1;
-    this.findAllUsersPaginated();
+    this.findAllUsersPaginated(this.filterString);
   }
-
+  onFilterStringChanged(newFilterString:string) {
+    this.page = 0;
+    this.filterString = newFilterString;
+    this.findAllUsersPaginated(this.filterString);
+  }
   openConfirmationDelete(user:any) {
     const modalRef = this.ngbModal.open(ConfirmModalComponent)
     modalRef.componentInstance.idObject = `${user.id}`;
